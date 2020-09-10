@@ -3,8 +3,7 @@ package GUI;
 import Base.DatabaseConnection;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.sql.*;
 
 public class AdaugaProdusNou extends JFrame{
@@ -31,13 +30,13 @@ public class AdaugaProdusNou extends JFrame{
                 System.out.println(stoc_initial.getText());
 
                 try {
-                    PreparedStatement st = DatabaseConnection.getConnection().prepareStatement("INSERT INTO stoc (cod_produs, categorie_produs, nume_produs, stoc_initial) VALUES (?, ?, ?, ?)");
-                    st.setString(1, cod_produs.getText());
-                    st.setString(2, categorie_produs.getText());
-                    st.setString(3, nume_produs.getText());
-                    st.setString(4, stoc_initial.getText());
-                    st.executeUpdate();
-                    st.close();
+                    PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO stoc (cod_produs, categorie_produs, nume_produs, stoc_initial) VALUES (?, ?, ?, ?)");
+                    ps.setString(1, cod_produs.getText());
+                    ps.setString(2, categorie_produs.getText());
+                    ps.setString(3, nume_produs.getText());
+                    ps.setString(4, stoc_initial.getText());
+                    ps.executeUpdate();
+                    ps.close();
 
                 } catch (SQLException ee) {
                     System.out.println(ee.getMessage());
