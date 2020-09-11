@@ -1,8 +1,10 @@
 package GUI;
 
+import Base.DatabaseConnection;
+
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import java.sql.*;
 
 public class AdaugaProdusNou extends JFrame{
     private JPanel adaugaProdusNouPanel;
@@ -26,6 +28,19 @@ public class AdaugaProdusNou extends JFrame{
                 System.out.println(categorie_produs.getText());
                 System.out.println(nume_produs.getText());
                 System.out.println(stoc_initial.getText());
+
+                try {
+                    PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO stoc (cod_produs, categorie_produs, nume_produs, stoc_initial) VALUES (?, ?, ?, ?)");
+                    ps.setString(1, cod_produs.getText());
+                    ps.setString(2, categorie_produs.getText());
+                    ps.setString(3, nume_produs.getText());
+                    ps.setString(4, stoc_initial.getText());
+                    ps.executeUpdate();
+                    ps.close();
+
+                } catch (SQLException ee) {
+                    System.out.println(ee.getMessage());
+                }
 
             }
 
