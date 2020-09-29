@@ -1,16 +1,15 @@
 package Base;
 
-import GUI.AdaugaProdusNou;
+import GUI.ListaProduse;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Main {
 
-    public static void main(String[] args) {
-        JFrame frame = new AdaugaProdusNou("Adauga produs nou");
+    public static void main(String[] args) throws SQLException {
+        JFrame frame = new ListaProduse("Lista produse");
+        frame.pack();
         frame.setVisible(true);
     }
 }
