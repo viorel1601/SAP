@@ -12,6 +12,7 @@ public class AdaugaProdusNou extends JFrame{
     private JTextField categorie_produs;
     private JTextField nume_produs;
     private JTextField stoc_initial;
+    private JTextField provenienta_firma;
     private JButton adauga;
 
     public AdaugaProdusNou(String titlu){
@@ -24,28 +25,25 @@ public class AdaugaProdusNou extends JFrame{
         adauga.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(cod_produs.getText());
-                System.out.println(categorie_produs.getText());
-                System.out.println(nume_produs.getText());
-                System.out.println(stoc_initial.getText());
 
                 try {
-                    PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO stoc (cod_produs, categorie_produs, nume_produs, stoc_initial) VALUES (?, ?, ?, ?)");
-                    ps.setString(1, cod_produs.getText());
-                    ps.setString(2, categorie_produs.getText());
-                    ps.setString(3, nume_produs.getText());
-                    ps.setString(4, stoc_initial.getText());
+                    PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO stoc (provenienta_firma, cod_produs, categorie_produs, nume_produs, stoc_initial) VALUES (?, ?, ?, ?, ?)");
+                    ps.setString(1, provenienta_firma.getText());
+                    ps.setString(2, cod_produs.getText());
+                    ps.setString(3, categorie_produs.getText());
+                    ps.setString(4, nume_produs.getText());
+                    ps.setString(5, stoc_initial.getText());
                     ps.executeUpdate();
+                    JOptionPane.showMessageDialog(adauga, "Produs adaugat cu succes!");
+                    setVisible(false);
                     ps.close();
-
                 } catch (SQLException ee) {
                     System.out.println(ee.getMessage());
                 }
-
             }
-
         });
     }
+    public JTextField getProvenienta_firma() { return provenienta_firma; }
 
     public JTextField getCod_produs(){
         return cod_produs;
@@ -62,5 +60,4 @@ public class AdaugaProdusNou extends JFrame{
     public JTextField getStoc_initial(){
         return stoc_initial;
     }
-
 }
