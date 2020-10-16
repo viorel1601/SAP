@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.AdaugaProdusNou">
   <grid id="27dc6" binding="adaugaProdusNouPanel" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="20" y="20" width="945" height="884"/>
+      <xy x="20" y="20" width="909" height="671"/>
     </constraints>
     <properties/>
     <border type="none"/>

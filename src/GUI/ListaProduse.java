@@ -12,6 +12,7 @@ public class ListaProduse extends JFrame {
     private JPanel listaProdusePanel;
     private JButton add;
     private JTable table;
+    private JButton modificaProdus;
 
     public ListaProduse(String titlu) throws SQLException {
         super(titlu);
@@ -28,8 +29,21 @@ public class ListaProduse extends JFrame {
         add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new AdaugaProdusNou("Adauga produs nou");
-                frame.setVisible(true);
+                JFrame frame1 = new AdaugaProdusNou("Adauga produs nou");
+                frame1.setVisible(true);
+            }
+        });
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                modificaProdus.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JFrame frame2 = new ModificaProdus("Modifica produs");
+                        frame2.setVisible(true);
+                    }
+                });
             }
         });
     }
