@@ -1,8 +1,8 @@
 package GUI;
 
 import Base.DatabaseConnection;
-import GUI.Produs.AddNewProduct;
-import GUI.Produs.ModifyProduct;
+import GUI.Product.AddNewProduct;
+import GUI.Product.ModifyProduct;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

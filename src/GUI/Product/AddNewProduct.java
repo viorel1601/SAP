@@ -1,43 +1,40 @@
-package GUI.Produs;
+package GUI.Product;
 
 import Base.DatabaseConnection;
-import GUI.ProductList;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.sql.*;
 
-public class ModifyProduct extends JFrame {
-    private JPanel modificaProdusPanel;
+public class AddNewProduct extends JFrame{
+    private JPanel addNewProductPanel;
     private JTextField product_code;
     private JTextField product_category;
     private JTextField product_name;
     private JTextField initial_stock;
     private JTextField company_provenience;
-    private JButton modify;
+    private JButton add;
 
-    public ModifyProduct(String tittle){
-        super(tittle);
+    public AddNewProduct(String titlu){
+        super(titlu);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(modificaProdusPanel);
+        this.setContentPane(addNewProductPanel);
         this.pack();
 
-        String ok1 = new ProductList().getOk1();
-        System.out.println("instance ok1 = " + ok1);
-
-        modify.addActionListener(new ActionListener() {
+        add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 try {
-                    PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO table1 (company_provenience, product_code, product_category, product_name, initial_stock) VALUES (?, ?, ?, ?, ?)");
+                    PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO table1 (provenienta_firma, cod_produs, categorie_produs, nume_produs, stoc_initial) VALUES (?, ?, ?, ?, ?)");
                     ps.setString(1, company_provenience.getText());
                     ps.setString(2, product_code.getText());
                     ps.setString(3, product_category.getText());
                     ps.setString(4, product_name.getText());
                     ps.setString(5, initial_stock.getText());
                     ps.executeUpdate();
-                    JOptionPane.showMessageDialog(modify, "Product modified ok!");
+                    JOptionPane.showMessageDialog(add, "Produs adaugat cu succes!");
                     setVisible(false);
                     ps.close();
                 } catch (SQLException ee) {
@@ -46,7 +43,6 @@ public class ModifyProduct extends JFrame {
             }
         });
     }
-
     public JTextField getCompany_provenience() { return company_provenience; }
 
     public JTextField getProduct_code(){
