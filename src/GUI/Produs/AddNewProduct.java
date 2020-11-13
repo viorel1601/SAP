@@ -27,7 +27,7 @@ public class AddNewProduct extends JFrame{
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO stoc (provenienta_firma, cod_produs, categorie_produs, nume_produs, stoc_initial) VALUES (?, ?, ?, ?, ?)");
+                    PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO table1 (provenienta_firma, cod_produs, categorie_produs, nume_produs, stoc_initial) VALUES (?, ?, ?, ?, ?)");
                     ps.setString(1, company_provenience.getText());
                     ps.setString(2, product_code.getText());
                     ps.setString(3, product_category.getText());

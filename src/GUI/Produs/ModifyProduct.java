@@ -30,7 +30,7 @@ public class ModifyProduct extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO stoc (company_provenience, product_code, product_category, product_name, initial_stock) VALUES (?, ?, ?, ?, ?)");
+                    PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement("INSERT INTO table1 (company_provenience, product_code, product_category, product_name, initial_stock) VALUES (?, ?, ?, ?, ?)");
                     ps.setString(1, company_provenience.getText());
                     ps.setString(2, product_code.getText());
                     ps.setString(3, product_category.getText());
