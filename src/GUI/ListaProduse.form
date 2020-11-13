@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.ListaProduse">
-  <grid id="27dc6" binding="listaProdusePanel" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="50" vgap="50">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.ProductList">
+  <grid id="27dc6" binding="productListPanel" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="50" vgap="50">
     <margin top="30" left="30" bottom="30" right="30"/>
     <constraints>
       <xy x="20" y="20" width="500" height="538"/>
@@ -65,15 +65,15 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Adauga Produs Nou"/>
+          <text value="Add new product"/>
         </properties>
       </component>
-      <component id="f741d" class="javax.swing.JButton" binding="modificaProdus">
+      <component id="f741d" class="javax.swing.JButton" binding="modifyProduct">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Modifica Produs"/>
+          <text value="Modify product"/>
         </properties>
       </component>
     </children>
