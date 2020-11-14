@@ -32,7 +32,7 @@ public class ProductList extends JFrame {
         add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame1 = new AddNewProduct("Add new product");
+                AddNewProduct frame1 = new AddNewProduct("Add new product");
                 frame1.setVisible(true);
             }
         });
