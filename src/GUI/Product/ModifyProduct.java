@@ -1,14 +1,14 @@
 package GUI.Product;
 
 import Base.DatabaseConnection;
-import GUI.ProductList;
+import GUI.ProductObj;
 
 import javax.swing.*;
 import java.awt.event.*;
 import java.sql.*;
 
 public class ModifyProduct extends JFrame {
-    private JPanel modificaProdusPanel;
+    private JPanel modifyProductPanel;
     private JTextField product_code;
     private JTextField product_category;
     private JTextField product_name;
@@ -20,11 +20,8 @@ public class ModifyProduct extends JFrame {
         super(tittle);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(modificaProdusPanel);
+        this.setContentPane(modifyProductPanel);
         this.pack();
-
-        String ok1 = new ProductList().getOk1();
-        System.out.println("instance ok1 = " + ok1);
 
         modify.addActionListener(new ActionListener() {
             @Override
@@ -63,5 +60,33 @@ public class ModifyProduct extends JFrame {
 
     public JTextField getInitial_stock(){
         return initial_stock;
+    }
+
+    public void setProduct_code(JTextField product_code) {
+        this.product_code = product_code;
+    }
+
+    public void setProduct_category(JTextField product_category) {
+        this.product_category = product_category;
+    }
+
+    public void setProduct_name(JTextField product_name) {
+        this.product_name = product_name;
+    }
+
+    public void setInitial_stock(JTextField initial_stock) {
+        this.initial_stock = initial_stock;
+    }
+
+    public void setCompany_provenience(JTextField company_provenience) {
+        this.company_provenience = company_provenience;
+    }
+
+    public void setProduct(ProductObj prod){
+        product_code.setText(prod.getProduct_code());
+        product_category.setText(prod.getProduct_category());
+        product_name.setText(prod.getProduct_name());
+        initial_stock.setText(prod.getInitial_stock());
+        company_provenience.setText(prod.getCompany_provenience());
     }
 }

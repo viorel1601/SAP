@@ -15,7 +15,7 @@ public class ProductList extends JFrame {
     private JButton add;
     private JTable table;
     private JButton modifyProduct;
-    private String ok1;
+    private ProductObj productObj = new ProductObj();
 
     public ProductList(String tittle) throws SQLException {
         super(tittle);
@@ -32,7 +32,7 @@ public class ProductList extends JFrame {
         add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame1 = new AddNewProduct("Adauga produs nou");
+                JFrame frame1 = new AddNewProduct("Add new product");
                 frame1.setVisible(true);
             }
         });
@@ -45,14 +45,19 @@ public class ProductList extends JFrame {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JFrame frame2 = new ModifyProduct("Modify product");
+                        ModifyProduct frame2 = new ModifyProduct("Modify product");
+
+                        productObj.setProduct_code((String) getTable().getValueAt(getTable().getSelectedRow(), 0));
+                        productObj.setProduct_category((String) getTable().getValueAt(getTable().getSelectedRow(), 1));
+                        productObj.setProduct_name((String) getTable().getValueAt(getTable().getSelectedRow(), 2));
+                        productObj.setInitial_stock((String) getTable().getValueAt(getTable().getSelectedRow(), 3));
+                        productObj.setCompany_provenience((String) getTable().getValueAt(getTable().getSelectedRow(), 4));
+                        frame2.setProduct(productObj);
+
                         frame2.setVisible(true);
                         System.out.println("randul = " + getTable().getSelectedRow());
+
                         int column = 0;
-
-                        ok1 = (String) getTable().getValueAt(getTable().getSelectedRow(), 1);
-                        System.out.println("ok1 = " + ok1);
-
                         while(column <= 4) {
                             String element = (String) getTable().getValueAt(getTable().getSelectedRow(), column);
                             System.out.println(element);
@@ -62,13 +67,6 @@ public class ProductList extends JFrame {
                 });
             }
         });
-    }
-
-    public ProductList(){}
-
-    public String getOk1(){
-        System.out.println("getter ok1 = " + this.ok1);
-        return this.ok1;
     }
 
     public static DefaultTableModel buildTableModel(ResultSet rs) throws SQLException {
